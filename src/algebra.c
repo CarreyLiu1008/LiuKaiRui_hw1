@@ -126,7 +126,7 @@ double det_matrix(Matrix a)
                         }
                     }
                 }
-                det += a.data[0][j] * pow(-1, j) * det_matrix(a0j);
+                det += a.data[0][j] * (j % 2 ? 1 : -1) * det_matrix(a0j);
             }
             return det;
         }
@@ -167,7 +167,7 @@ Matrix inv_matrix(Matrix a)
                         }
                     }
                 }
-                c.data[i][j] = pow(-1, i+j) * det_matrix(aij)/det_matrix(a);
+                c.data[i][j] = ((i + j) % 2 ? 1 : -1) * det_matrix(aij)/det_matrix(a);
             }
         }
         return c;
